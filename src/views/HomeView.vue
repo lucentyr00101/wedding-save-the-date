@@ -16,7 +16,7 @@ import Content from '@/components/Content/ContentContainer.vue'
 #invitation
   max-width 1000px
   margin 0 auto
-  background url('@/assets/bg.png')
+  background url('@/assets/bg.jpg')
   background-size cover
   background-repeat no-repeat
   min-height 100vh

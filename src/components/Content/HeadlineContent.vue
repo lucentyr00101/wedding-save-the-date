@@ -14,7 +14,7 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <img class="married animate__animated initial-hide" src="@/assets/married.png" alt="" style="width: 100%;">
+      <img class="married animate__animated initial-hide" src="@/assets/married.jpg" alt="" style="width: 100%;">
     </div>
   </div>
 </template>

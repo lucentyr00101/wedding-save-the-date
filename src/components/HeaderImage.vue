@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <img
-          src="@/assets/header.svg"
+          src="@/assets/header.jpg"
           class="header-image"
         >
       </div>

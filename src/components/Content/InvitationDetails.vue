@@ -1,7 +1,7 @@
 <template>
   <div class="invitation-details animate__animated initial-hide">
     <div class="exclusive animate__animated initial-hide">
-      <img src="@/assets/hand-point-right.svg" alt="" class="hand-point-right">
+      <img src="@/assets/hand-point-right.png" alt="" class="hand-point-right">
       <span class="exclusive__text">
         Exclusive: You are invited!
       </span>
@@ -23,7 +23,7 @@
     <div class="divider"></div>
     <div class="row">
       <div class="col">
-        <img src="@/assets/footer.svg" class="footer-image" alt="">
+        <img src="@/assets/footer.jpg" class="footer-image" alt="">
       </div>
     </div>
   </div>
