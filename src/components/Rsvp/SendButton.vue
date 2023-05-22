@@ -28,8 +28,8 @@ import { reactive, ref } from 'vue'
 import RsvpModal from './RsvpModal.vue'
 import axios from 'axios'
 
-const confirm = 'http://api.ranzandkyla.online/api/confirm'
-const decline =  'http://api.ranzandkyla.online/api/decline'
+const confirm = 'https://api.ranzandkyla.online/api/confirm'
+const decline =  'https://api.ranzandkyla.online/api/decline'
 
 const modal = ref(false)
 const loading = ref(false)
