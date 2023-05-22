@@ -5,6 +5,7 @@
     @close="modal = false"
     @clearForm="clearForm"
     @submit="handleSubmit"
+    :loading="loading"
   >
     <template #body>
       <div class="form-group">
@@ -27,10 +28,11 @@ import { reactive, ref } from 'vue'
 import RsvpModal from './RsvpModal.vue'
 import axios from 'axios'
 
-const confirm = 'https://api.ranzandkyla.online/api/confirm'
-const decline =  'https://api.ranzandkyla.online/api/decline'
+const confirm = 'http://api.ranzandkyla.online/api/confirm'
+const decline =  'http://api.ranzandkyla.online/api/decline'
 
 const modal = ref(false)
+const loading = ref(false)
 
 const form = reactive({
   name: '',
@@ -43,13 +45,16 @@ const clearForm = () => {
 }
 
 const handleSubmit = async () => {
+  loading.value = true
   try {
     const { answer, name } = form
-    const res = await axios.post(answer === 'Y' ? confirm : decline, { name })
+    const url = answer === 'Y' ? confirm : decline
+    const res = await axios.post(url, { name })
     console.log(res)
   } catch (e) {
     console.log(e)
   }
+  loading.value = false
 }
 
 </script>

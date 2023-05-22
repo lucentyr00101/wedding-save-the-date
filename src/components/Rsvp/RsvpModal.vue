@@ -12,18 +12,20 @@
 
         <div class="modal-footer">
           <slot name="footer">
-            <button
-              class="button"
-              @click="closeModal"
-            >
-              Close
-            </button>
-            <button
-              class="button"
-              @click="handleSubmit"
-            >
-              Submit
-            </button>
+            <template v-if="!loading">
+              <button
+                class="button"
+                @click="closeModal"
+              >
+                Close
+              </button>
+              <button
+                class="button"
+                @click="handleSubmit"
+              >
+                Submit
+              </button>
+            </template>
           </slot>
         </div>
       </div>
@@ -35,7 +37,8 @@
 const emit = defineEmits(['close', 'clearForm', 'submit'])
 
 defineProps({
-  show: Boolean
+  show: Boolean,
+  loading: Boolean
 })
 
 const closeModal = () => {
