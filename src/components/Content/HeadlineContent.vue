@@ -16,12 +16,14 @@
     <div class="col-12">
       <img class="married animate__animated initial-hide" src="@/assets/married.jpg" alt="" style="width: 100%;">
     </div>
+    <SendRsvp />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { onMounted } from 'vue';
 import { animateCSS } from '@/utils/helpers'
+import SendRsvp from '@/components/Rsvp/SendButton.vue'
 
 onMounted(() => {
   document.onreadystatechange = () => {
