@@ -6,6 +6,7 @@
         Exclusive: You are invited!
       </span>
     </div>
+    <SendRsvp />
     <div class="divider"></div>
     <p class="date initial-hide">Saturday, 23rd September, 2023</p>
     <div class="row venue-container initial-hide">
@@ -28,3 +29,7 @@
     </div>
   </div>
 </template>
+
+<script lang="ts" setup>
+import SendRsvp from '@/components/Rsvp/SendButton.vue'
+</script>

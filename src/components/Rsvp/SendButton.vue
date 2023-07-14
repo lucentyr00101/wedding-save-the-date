@@ -1,5 +1,5 @@
 <template>
-  <button class="send-button" type="button" @click="modal = true">Send RSVP</button>
+  <button class="send-button" type="button" @click="modal = true">Click here to Send RSVP</button>
   <RsvpModal
     :show="modal"
     @close="modal = false"
@@ -61,4 +61,18 @@ const handleSubmit = async () => {
     gap 10px
     align-items center
     margin-bottom 20px
+  .send-button
+    background transparent
+    font-family 'Headline'
+    padding 20px
+    font-size 40px
+    margin-top 20px
+    width 100%
+    transition all 0.2s linear
+    border 2px dashed #000
+    border-radius 10px
+    &:hover
+      background black
+      color #fff
+      border-color #fff
 </style>
