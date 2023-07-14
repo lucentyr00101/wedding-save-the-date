@@ -28,8 +28,7 @@ import { reactive, ref } from 'vue'
 import RsvpModal from './RsvpModal.vue'
 import axios from 'axios'
 
-const confirm = 'http://api.ranzandkyla.online/api/confirm'
-const decline =  'http://api.ranzandkyla.online/api/decline'
+const api = 'http://ranzandkyla.online/wp-json/api/v1/respondents'
 
 const modal = ref(false)
 const loading = ref(false)
@@ -48,8 +47,7 @@ const handleSubmit = async () => {
   loading.value = true
   try {
     const { answer, name } = form
-    const url = answer === 'Y' ? confirm : decline
-    const res = await axios.post(url, { name })
+    const res = await axios.post(api, { name, answer })
     console.log(res)
   } catch (e) {
     console.log(e)
