@@ -13,6 +13,7 @@ import Content from '@/components/Content/ContentContainer.vue'
 import axios from 'axios'
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import router from '@/router';
 
 const route = useRoute()
 const id = route.query.id
@@ -27,6 +28,7 @@ const checkUUID = async () => {
     console.log({data})
   } catch (e) {
     console.log(e)
+    router.push({ path: '/404' })
   }
 }
 
