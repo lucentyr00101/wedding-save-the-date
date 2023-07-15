@@ -19,6 +19,13 @@
           <option value="N">No</option>
         </select>
       </div>
+      <div class="form-group">
+        <label for="answer">Seats to be used:</label>
+        <select v-model="form.seats" style="flex-grow: 1;" name="answer" id="answer">
+          <option selected value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
+      </div>
     </template>
   </RsvpModal>
 </template>
@@ -28,17 +35,21 @@ import { reactive, ref } from 'vue'
 import RsvpModal from './RsvpModal.vue'
 import axios from 'axios'
 
+// TODO: create an api that allows updating of post type, find uuid, update seats_to_be_used
+
 const modal = ref(false)
 const loading = ref(false)
 
 const form = reactive({
   name: '',
-  answer: 'Y'
+  answer: 'Y',
+  seats: 0
 })
 
 const clearForm = () => {
   form.name = ''
   form.answer = 'Y'
+  form.seats = 0
 }
 
 const handleSubmit = async () => {

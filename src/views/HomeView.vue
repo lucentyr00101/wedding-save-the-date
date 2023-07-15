@@ -10,6 +10,27 @@
 <script setup lang="ts">
 import HeaderImage from '@/components/HeaderImage.vue'
 import Content from '@/components/Content/ContentContainer.vue'
+import axios from 'axios'
+import { onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute()
+const id = route.query.id
+
+onMounted(() => {
+  checkUUID()
+})
+
+const checkUUID = async () => {
+  try {
+    const { data } = await axios.get(`/invitees/${id}`)
+    console.log({data})
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+
 </script>
 
 <style lang="stylus" scoped>
