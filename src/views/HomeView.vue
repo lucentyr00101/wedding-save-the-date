@@ -14,9 +14,12 @@ import axios from 'axios'
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import router from '@/router';
+import { userData } from '@/stores/user'
 
 const route = useRoute()
 const id = route.query.id
+const userStore = userData()
+const { setUserValues } = userStore
 
 onMounted(() => {
   checkUUID()
@@ -25,7 +28,7 @@ onMounted(() => {
 const checkUUID = async () => {
   try {
     const { data } = await axios.get(`/invitees/${id}`)
-    console.log({data})
+    setUserValues(data)
   } catch (e) {
     console.log(e)
     router.push({ path: '/404' })

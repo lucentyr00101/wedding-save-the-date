@@ -9,8 +9,12 @@
   >
     <template #body>
       <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" v-model="form.name">
+        <label for="name">Full Name:</label>
+        <p style="margin: 0px;">{{ user.invitee_name }}</p>
+      </div>
+      <div class="form-group">
+        <label for="name">Max Seats Allowed:</label>
+        <p style="margin: 0px;">{{ user.max_seats_allowed }}</p>
       </div>
       <div class="form-group">
         <label for="answer">Confirmation:</label>
@@ -21,33 +25,32 @@
       </div>
       <div class="form-group">
         <label for="answer">Seats to be used:</label>
-        <select v-model="form.seats" style="flex-grow: 1;" name="answer" id="answer">
-          <option selected value="Y">Yes</option>
-          <option value="N">No</option>
-        </select>
+        <input type="text" v-model="form.seats" />
       </div>
     </template>
   </RsvpModal>
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import RsvpModal from './RsvpModal.vue'
 import axios from 'axios'
+import { userData } from '@/stores/user'
 
 // TODO: create an api that allows updating of post type, find uuid, update seats_to_be_used
 
 const modal = ref(false)
 const loading = ref(false)
+const userStore = userData()
 
 const form = reactive({
-  name: '',
   answer: 'Y',
   seats: 0
 })
 
+const user = computed(() => userStore.user)
+
 const clearForm = () => {
-  form.name = ''
   form.answer = 'Y'
   form.seats = 0
 }
@@ -55,9 +58,10 @@ const clearForm = () => {
 const handleSubmit = async () => {
   loading.value = true
   try {
-    const { answer, name } = form
-    const res = await axios.post('/respondents', { name, answer })
-    console.log(res)
+    const { answer } = form
+    const seats = await axios.post(`/invitees/update/${user.value.uuid}`, { seats_to_be_used: form.seats })
+    const res = await axios.post('/respondents', { name: user.value.invitee_name, answer })
+    console.log(res, seats)
   } catch (e) {
     console.log(e)
   }
