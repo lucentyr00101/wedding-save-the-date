@@ -1,50 +1,52 @@
 <template>
-  <button class="send-button" type="button" onclick="rsvp.showModal()">Click here to Send RSVP</button>
-  <dialog id="rsvp" class="modal">
-    <form method="dialog" class="modal-box">
-      <div class="form-control w-full">
-        <label class="label">
-          <span class="label-text">Full Name:</span>
-        </label>
-        <input type="text" :value="user.invitee_name" disabled class="input input-bordered w-full" />
-      </div>
-      <div class="form-control w-full">
-        <label class="label">
-          <span class="label-text">Max Seats Allotted:</span>
-        </label>
-        <input type="text" :value="user.max_seats_allowed" disabled class="input input-bordered w-full" />
-      </div>
-      <div class="form-control w-full">
-        <label class="label">
-          <span class="label-text">Confirmation:</span>
-        </label>
-        <select v-model="form.answer" class="select select-bordered">
-          <option selected value="Y">Yes</option>
-          <option value="N">No</option>
-        </select>
-      </div>
-      <div class="form-control w-full">
-        <label class="label">
-          <span class="label-text">Seats to be used:</span>
-        </label>
-        <input type="text" class="input input-bordered w-full input-info" v-model="form.seats" />
-      </div>
-      <div class="mt-5 flex justify-end content-center gap-2">
-        <button
-          class="btn"
-          @click="closeModal"
-        >
-          Close
-        </button>
-        <button
-          class="btn btn-primary"
-          @click="handleSubmit"
-        >
-          Submit
-        </button>
-      </div>
-    </form>
-  </dialog>
+  <div>
+    <button class="send-button" type="button" onclick="rsvp.showModal()">Click here to Send RSVP</button>
+    <dialog id="rsvp" class="modal">
+      <form method="dialog" class="modal-box">
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text">Full Name:</span>
+          </label>
+          <input type="text" :value="user.invitee_name" disabled class="input input-bordered w-full" />
+        </div>
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text">Max Seats Allotted:</span>
+          </label>
+          <input type="text" :value="user.max_seats_allowed" disabled class="input input-bordered w-full" />
+        </div>
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text">Confirmation:</span>
+          </label>
+          <select v-model="form.answer" class="select select-bordered">
+            <option selected value="Y">Yes</option>
+            <option value="N">No</option>
+          </select>
+        </div>
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text">Seats to be used:</span>
+          </label>
+          <input type="text" class="input input-bordered w-full input-info" v-model="form.seats" />
+        </div>
+        <div class="mt-5 flex justify-end content-center gap-2">
+          <button
+            class="btn"
+            @click="closeModal"
+          >
+            Close
+          </button>
+          <button
+            class="btn btn-primary"
+            @click="handleSubmit"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </dialog>
+  </div>
 </template>
 
 <script lang="ts" setup>
