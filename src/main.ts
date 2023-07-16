@@ -8,7 +8,7 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import 'bootstrap/dist/css/bootstrap-reboot.min.css'
 import 'bootstrap/dist/css/bootstrap-utilities.min.css'
-import '@/assets/styles/main.styl'
+import '@/assets/styles/main.css'
 import 'animate.css'
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL

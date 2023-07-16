@@ -31,5 +31,5 @@
 </template>
 
 <script lang="ts" setup>
-import SendRsvp from '@/components/Rsvp/SendButton.vue'
+import SendRsvp from '@/components/Rsvp/SendRsvp.vue'
 </script>
