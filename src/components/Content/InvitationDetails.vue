@@ -20,7 +20,7 @@
         <p>7 PM - 11 PM</p>
       </div>
     </div>
-    <p class="rsvp-text">PLEASE SEND RSVP BY OWL BEFORE MAY 10TH</p>
+    <p class="rsvp-text">PLEASE SEND RSVP BY OWL BEFORE JULY 30TH</p>
     <div class="divider"></div>
     <div class="row">
       <div class="col">
