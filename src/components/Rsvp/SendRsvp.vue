@@ -1,8 +1,16 @@
 <template>
   <div>
-    <button class="send-button" type="button" onclick="rsvp.showModal()">Click here to Send RSVP</button>
-    <dialog id="rsvp" class="modal">
+    <button class="send-button" type="button" @click="openModal">Click here to Send RSVP</button>
+    <dialog id="rsvp" class="modal" :class="{ 'modal-open': modal }">
       <form method="dialog" class="modal-box">
+        <div class="alert alert-error" v-if="errorMessage">
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span>{{ errorMessage }}</span>
+        </div>
+        <div class="alert alert-success" v-if="successMessage">
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span>{{ successMessage }}</span>
+        </div>
         <div class="form-control w-full">
           <label class="label">
             <span class="label-text">Full Name:</span>
@@ -34,13 +42,16 @@
           <button
             class="btn"
             @click="closeModal"
+            :disabled="loading"
           >
             Close
           </button>
           <button
             class="btn btn-primary"
             @click="handleSubmit"
+            :disabled="loading"
           >
+            <span v-if="loading" class="loading loading-spinner"></span>
             Submit
           </button>
         </div>
@@ -58,6 +69,8 @@ import { userData } from '@/stores/user'
 
 const loading = ref(false)
 const modal = ref(false)
+const errorMessage = ref('')
+const successMessage = ref('')
 const userStore = userData()
 
 const form = reactive({
@@ -77,15 +90,22 @@ const closeModal = () => {
   modal.value = false
 }
 
+const openModal = () => {
+  modal.value = true
+}
+
 const handleSubmit = async () => {
   loading.value = true
   try {
+    errorMessage.value = ''
+    successMessage.value = ''
     const { answer } = form
-    const seats = await axios.post(`/invitees/update/${user.value.uuid}`, { seats_to_be_used: form.seats })
-    const res = await axios.post('/respondents', { name: user.value.invitee_name, answer })
-    console.log(res, seats)
-  } catch (e) {
-    console.log(e)
+    await axios.post(`/invitees/update/${user.value.uuid}`, { seats_to_be_used: form.seats })
+    await axios.post('/respondents', { name: user.value.invitee_name, answer })
+    successMessage.value = 'Saved!'
+  } catch (e: any) {
+    errorMessage.value = e.response.data.message
+    form.seats = 0
   }
   loading.value = false
 }
