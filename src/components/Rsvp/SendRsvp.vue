@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="send-button" type="button" @click="openModal">Click here to Send RSVP</button>
+    <button class="send-button animate__animated initial-hide" type="button" @click="openModal">Click here to Send RSVP</button>
     <dialog id="rsvp" class="modal" :class="{ 'modal-open': modal }">
       <form method="dialog" class="modal-box">
         <div class="alert alert-error" v-if="errorMessage">

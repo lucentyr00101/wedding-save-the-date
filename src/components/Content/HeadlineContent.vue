@@ -43,8 +43,8 @@ onMounted(() => {
       animateCSS({ element: '.exclusive', animation: 'jackInTheBox', delay: 5 }).then(
         () => animateCSS({ element: '.exclusive', animation: 'flash', slow: true, infinite: true })
       )
-
-      animateCSS({ element: '.invitation-details', animation: 'fadeIn', delay: 5 })
+      animateCSS({ element: '.send-button', animation: 'fadeIn', delay: 5 })
+      animateCSS({ element: '.details', animation: 'zoomInDown', delay: 5 })
     }
   }
   
