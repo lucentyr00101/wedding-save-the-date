@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background: url('@/assets/body-bg.jpg');
+  background-size: cover;
+}
+
 .divider {
   height: 12px;
   background: #000;
