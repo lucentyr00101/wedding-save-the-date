@@ -133,6 +133,9 @@ body {
     font-size: 1.3em;
     letter-spacing: 1px;
   }
+  .send-button {
+    font-size: 30px;
+  }
 }
 @media screen and (min-width: 428px) and (max-width: 600px) {
   .headline-text {
