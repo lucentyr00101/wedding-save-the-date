@@ -21,7 +21,7 @@
           <p>7 PM - 11 PM</p>
         </div>
       </div>
-      <p class="rsvp-text">PLEASE SEND RSVP BY OWL BEFORE AUG 14TH</p>
+      <p class="rsvp-text">PLEASE SEND RSVP BY OWL BEFORE AUG 31<sup>ST</sup></p>
       <div class="divider"></div>
       <div class="row">
         <div class="col">
